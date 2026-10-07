@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0b0b0f" />
+<title>ASTRA — Recruitment · Lordnine: Infinite Class Guild</title>
+<meta name="description" content="ASTRA — a Lordnine: Infinite Class guild. Together, we rise. Fairness, respect, unity, transparency. Read the recruitment info, then apply through Discord." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script>document.documentElement.classList.add('js');</script>
+<style>
+  /* ============================================================
+     1. THEME TOKENS
+     ============================================================ */
+  :root{
+    --bg:#0b0b0f;
+    --surface:#121217;
+    --raised:#17151b;
+    --line:#29272e;
+    --gold:#e7c477;
+    --gold-dim:#a58b56;
+    --gold-text:#f0d596;
+    --gold-label:#b99f6c;
+    --text:#e9e5dc;
+    --muted:#a19b8e;
+    --red:#f19a98;
+
+    --card-bg:#161319;
+    --card-line:#665330;
+
+    --ui:Inter,"Segoe UI","Malgun Gothic",system-ui,sans-serif;
+    --display:Georgia,"Times New Roman","Malgun Gothic",serif;
+
+    --t:200ms ease;
+    --max:680px;
+    --cta:510px;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--ui);
+    font-size:16px;
+    line-height:1.72;
+    letter-spacing:.005em;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  /* Background layer 1 — warm radial glow (spec) */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+    background:radial-gradient(ellipse at 50% 48%, rgba(68,53,26,.16), transparent 57%);
+  }
+
+  /* ============================================================
+     2. IMMERSIVE MOVING BACKGROUND (canvas + vignette + topline)
+     ============================================================ */
+  #bg{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:0;
+    pointer-events:none;
+    display:block;
+  }
+  .vignette{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    background:radial-gradient(ellipse at 50% 42%, transparent 50%, rgba(4,4,8,.55) 100%);
+  }
+  .topline{
+    position:fixed;
+    top:0;left:0;right:0;
+    height:2px;
+    z-index:60;
+    pointer-events:none;
+    background:linear-gradient(90deg, transparent 6%, rgba(231,196,119,0) 22%, rgba(231,196,119,.55) 50%, rgba(231,196,119,0) 78%, transparent 94%);
+    background-size:220% 100%;
+    animation:toplineShift 14s ease-in-out infinite;
+  }
+  @keyframes toplineShift{
+    0%,100%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+  }
+
+  main,footer{position:relative;z-index:1;}
+
+  /* ============================================================
+     3. SHARED LAYOUT
+     ============================================================ */
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 22px;}
+  .cta-wrap{max-width:var(--cta);margin-left:auto;margin-right:auto;}
+
+  section{padding:74px 0;}
+  section + section{border-top:1px solid var(--line);}
+  #about{padding-top:96px;}
+
+  .label{
+    font-size:10px;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.26em;
+    color:var(--gold-label);
+    margin:0 0 14px;
+  }
+  .label::before{
+    content:"";
+    display:inline-block;
+    width:22px;height:1px;
+    background:var(--gold-dim);
+    vertical-align:middle;
+    margin-right:10px;
+    opacity:.7;
+  }
+  .label.sm{letter-spacing:.22em;}
+
+  h1,h2,h3,h4{font-family:var(--display);font-weight:400;color:var(--gold-text);margin:0;}
+
+  .hero-title{
+    font-size:clamp(64px, 11vw, 134px);
+    line-height:.92;
+    letter-spacing:-.015em;
+    color:var(--gold-text);
+    filter:drop-shadow(0 8px 44px rgba(231,196,119,.16));
+  }
+  @supports ((-webkit-background-clip:text) or (background-clip:text)){
+    .hero-title{
+      background:linear-gradient(105deg, var(--gold-text) 0%, var(--gold-text) 38%, #fdf0cd 50%, var(--gold-text) 62%, var(--gold-text) 100%);
+      background-size:230% 100%;
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      animation:sheen 9s ease-in-out infinite;
+    }
+  }
+  @keyframes sheen{
+    0%,100%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+  }
+  .tagline{
+    font-family:var(--display);
+    font-size:clamp(20px,3.4vw,27px);
+    color:var(--gold-text);
+    margin:18px 0 0;
+    letter-spacing:.01em;
+  }
+
+  .section-title{
+    font-size:clamp(34px, 4vw, 55px);
+    line-height:1.08;
+    letter-spacing:-.01em;
+  }
+
+  .lead{font-size:18px;line-height:1.66;color:var(--text);}
+  .muted{color:var(--muted);}
+  .small{font-size:14px;line-height:1.68;}
+
+  p{margin:0 0 14px;}
+  p:last-child{margin-bottom:0;}
+
+  .divider{
+    height:1px;
+    border:0;
+    margin:34px 0;
+    background:linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity:.2;
+  }
+
+  a{color:var(--gold);text-decoration:none;transition:color var(--t),border-color var(--t);}
+  a:hover{color:var(--gold-text);}
+
+  :focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-radius:4px;}
+
+  ::selection{background:rgba(231,196,119,.24);color:var(--gold-text);}
+
+  /* ============================================================
+     4. FIXED TOP-LEFT BRAND CHIP + LANGUAGE TOGGLE (top-right)
+     ============================================================ */
+  .brandchip{
+    position:fixed;
+    top:14px;
+    left:14px;
+    z-index:50;
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--gold-label);
+    background:rgba(18,18,23,.86);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:8px 14px;
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    white-space:nowrap;
+    pointer-events:none;
+  }
+  .lang{
+    position:fixed;
+    top:14px;
+    right:14px;
+    z-index:50;
+    display:flex;
+    align-items:center;
+    gap:2px;
+    padding:4px;
+    background:rgba(18,18,23,.86);
+    border:1px solid var(--line);
+    border-radius:999px;
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+  }
+  .lang button{
+    font-family:var(--ui);
+    font-size:10.5px;
+    font-weight:600;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--muted);
+    background:transparent;
+    border:0;
+    border-radius:999px;
+    padding:7px 11px;
+    min-height:30px;
+    cursor:pointer;
+    transition:color var(--t),background var(--t);
+    white-space:nowrap;
+  }
+  .lang button:hover{color:var(--gold-text);}
+  .lang button[aria-pressed="true"]{
+    color:#211b11;
+    background:var(--gold);
+  }
+  .lang .sep{color:var(--line);font-size:10px;padding:0 1px;user-select:none;}
+
+  /* ============================================================
+     5. BUTTONS
+     ============================================================ */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    font-family:var(--ui);
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    border-radius:8px;
+    min-height:38px;
+    padding:0 26px;
+    cursor:pointer;
+    border:1px solid transparent;
+    transition:background var(--t),border-color var(--t),color var(--t),transform var(--t);
+    text-align:center;
+  }
+  .btn-primary{
+    background:var(--gold);
+    color:#211b11;
+    border-color:var(--gold);
+  }
+  .btn-primary:hover{background:var(--gold-text);border-color:var(--gold-text);color:#211b11;transform:translateY(-2px);}
+  .btn-primary:active{transform:translateY(0);}
+  .btn-block{width:100%;}
+  .btn-note{
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--gold-label);
+    text-align:center;
+    margin-top:14px;
+  }
+
+  /* ============================================================
+     6. CARDS / PANELS / 3D TILT + SHEEN
+     ============================================================ */
+  .card,.step,.connect{
+    position:relative;
+    overflow:hidden;
+    transition:border-color var(--t),transform var(--t),background var(--t);
+    will-change:transform;
+  }
+  .card,.step{
+    background:var(--card-bg);
+    border:1px solid var(--card-line);
+    border-radius:10px;
+    padding:23px 22px;
+  }
+  .card + .card{margin-top:14px;}
+  .card:hover,.step:hover,.connect:hover{border-color:var(--gold);transform:translateY(-3px);}
+  .card::after,.step::after,.connect::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:inherit;
+    pointer-events:none;
+    background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%), rgba(231,196,119,.09), transparent 65%);
+    opacity:0;
+    transition:opacity var(--t);
+  }
+  .card:hover::after,.step:hover::after,.connect:hover::after{opacity:1;}
+
+  .card h3{font-size:20px;line-height:1.3;margin-bottom:8px;letter-spacing:0;}
+  .card p{color:var(--muted);}
+
+  .step.bonus{border-color:rgba(231,196,119,.38);}
+  .step.bonus .step-badge{font-size:13px;}
+
+  .panel{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:23px 22px;
+    transition:border-color var(--t);
+  }
+  .panel:hover{border-color:#3b3742;}
+  .panel h4{
+    font-family:var(--ui);
+    font-size:11px;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.22em;
+    color:var(--gold-label);
+    margin:0 0 6px;
+  }
+
+  /* Warning */
+  .warn{
+    background:rgba(241,154,152,.06);
+    border:1px solid rgba(241,154,152,.3);
+    border-left:3px solid var(--red);
+    border-radius:10px;
+    padding:16px 18px;
+    margin:26px 0 30px;
+  }
+  .warn p{
+    margin:0;
+    font-size:14.5px;
+    font-weight:500;
+    color:#f4cfcd;
+    line-height:1.6;
+  }
+
+  /* Numbered lists */
+  .num{list-style:none;margin:0;padding:0;counter-reset:n;}
+  .num li{
+    counter-increment:n;
+    position:relative;
+    padding:0 0 0 44px;
+    margin:0 0 15px;
+    color:var(--muted);
+    font-size:15.5px;
+    line-height:1.66;
+  }
+  .num li:last-child{margin-bottom:0;}
+  .num li::before{
+    content:counter(n,decimal-leading-zero);
+    position:absolute;
+    left:0;
+    top:2px;
+    font-family:var(--ui);
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:.18em;
+    color:var(--gold-dim);
+    border:1px solid var(--card-line);
+    border-radius:6px;
+    padding:3px 6px;
+    background:var(--raised);
+  }
+  .num li strong{color:var(--text);font-weight:600;}
+  .num li em{color:var(--text);font-style:normal;}
+  .num.cp li::before{
+    content:"06";
+    color:#211b11;
+    background:var(--gold);
+    border-color:var(--gold);
+  }
+  .num.cp li{color:var(--gold-text);}
+
+  .subhead{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin:32px 0 18px;
+  }
+  .subhead span{
+    font-size:10px;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.3em;
+    color:var(--gold-label);
+    white-space:nowrap;
+  }
+  .subhead::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--card-line),transparent);}
+
+  /* Steps */
+  .step + .step{margin-top:16px;}
+  .step-head{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+  .step-badge{
+    flex:0 0 auto;
+    width:28px;height:28px;
+    display:grid;place-items:center;
+    border-radius:50%;
+    background:var(--gold);
+    color:#211b11;
+    font-family:var(--ui);
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:0;
+    box-shadow:0 0 0 1px rgba(231,196,119,.25), 0 4px 14px rgba(231,196,119,.18);
+  }
+  .step-title{
+    font-family:var(--display);
+    font-weight:400;
+    font-size:21px;
+    line-height:1.3;
+    color:var(--gold-text);
+    margin:0;
+  }
+  .step p{color:var(--muted);font-size:15px;}
+  .step .num{margin-top:4px;}
+
+  .channel{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:.06em;
+    color:var(--gold-text);
+    background:rgba(231,196,119,.07);
+    border:1px solid rgba(231,196,119,.28);
+    border-radius:999px;
+    padding:5px 13px;
+    margin-bottom:14px;
+  }
+  .channel i{
+    width:6px;height:6px;border-radius:50%;
+    background:var(--gold);
+    display:inline-block;
+  }
+
+  .quote{
+    position:relative;
+    background:var(--raised);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:15px 16px;
+    color:var(--text);
+    font-size:14px;
+    line-height:1.68;
+    margin:0;
+  }
+  .quote::before{
+    content:"";
+    position:absolute;
+    left:0;top:0;bottom:0;
+    width:2px;
+    background:var(--gold-dim);
+    opacity:.55;
+    border-radius:2px 0 0 2px;
+  }
+  .opt-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-bottom:10px;
+  }
+  .opt-title{
+    font-family:var(--ui);
+    font-size:10.5px;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.22em;
+    color:var(--gold-label);
+    margin:0;
+  }
+  .copy{
+    font-family:var(--ui);
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--gold-label);
+    background:transparent;
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:5px 10px;
+    min-height:26px;
+    cursor:pointer;
+    transition:color var(--t),border-color var(--t),background var(--t);
+  }
+  .copy:hover{color:#211b11;background:var(--gold);border-color:var(--gold);}
+
+  .tpl{margin:14px 0 0;}
+  .tpl ul{
+    list-style:none;
+    margin:0;padding:0;
+    background:var(--raised);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:14px 16px;
+  }
+  .tpl li{
+    font-size:13.5px;
+    color:var(--text);
+    padding:5px 0 5px 20px;
+    position:relative;
+    border-bottom:1px solid var(--line);
+  }
+  .tpl li:last-child{border-bottom:0;}
+  .tpl li::before{content:"—";position:absolute;left:0;color:var(--gold-dim);}
+
+  /* Highlights grid */
+  .grid{display:grid;grid-template-columns:1fr;gap:14px;}
+  .hl h3{font-size:19px;margin-bottom:6px;}
+  .hl .glyph{
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--gold-dim);
+    display:block;
+    margin-bottom:12px;
+  }
+
+  /* Discord CTA */
+  .connect{
+    background:var(--card-bg);
+    border:1px solid var(--card-line);
+    border-radius:10px;
+    padding:30px 24px 26px;
+    text-align:center;
+  }
+  .connect .label{margin-bottom:0;}
+  .connect-text{font-size:18px;line-height:1.6;color:var(--text);margin:16px 0 0;}
+  .fallback{
+    margin-top:16px;
+    padding-top:16px;
+    border-top:1px solid var(--line);
+    font-size:13px;
+    color:var(--muted);
+  }
+  .fallback b{color:var(--gold-text);font-weight:600;letter-spacing:.02em;}
+
+  /* Bonus — hidden last step (collapsed until revealed) */
+  .bonus-wrap{text-align:center;}
+  .bonus-toggle{
+    display:none;
+    align-items:center;
+    gap:10px;
+    font-family:var(--ui);
+    font-size:10.5px;
+    font-weight:600;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+    color:var(--gold-label);
+    background:transparent;
+    border:1px dashed rgba(231,196,119,.35);
+    border-radius:999px;
+    padding:10px 22px;
+    min-height:38px;
+    cursor:pointer;
+    transition:color var(--t),border-color var(--t);
+  }
+  .js .bonus-toggle{display:inline-flex;}
+  .bonus-toggle:hover{color:var(--gold-text);border-color:var(--gold);border-style:solid;}
+  .bonus-toggle .star{color:var(--gold);animation:starPulse 3.2s ease-in-out infinite;}
+  .bonus-toggle .chev{font-size:10px;transition:transform var(--t);}
+  .bonus-toggle[aria-expanded="true"] .chev{transform:rotate(180deg);}
+  @keyframes starPulse{0%,100%{opacity:.5}50%{opacity:1}}
+  .bonus-panel{
+    display:grid;
+    grid-template-rows:1fr;
+    text-align:left;
+    transition:grid-template-rows .5s cubic-bezier(.22,.61,.36,1);
+  }
+  .bonus-inner{overflow:hidden;min-height:0;}
+  .bonus-inner .step{margin-top:22px;}
+  .js .bonus-panel{grid-template-rows:0fr;}
+  .js .bonus-panel.open{grid-template-rows:1fr;}
+  .js .bonus-inner{visibility:hidden;transition:visibility 0s .5s;}
+  .js .bonus-panel.open .bonus-inner{visibility:visible;transition:visibility 0s 0s;}
+  .js .bonus-inner .step{opacity:0;transition:opacity .45s ease .12s,border-color var(--t),transform var(--t);}
+  .js .bonus-panel.open .bonus-inner .step{opacity:1;}
+
+  /* Footer */
+  footer{
+    border-top:1px solid var(--line);
+    padding:30px 0 56px;
+    text-align:center;
+  }
+  footer .fnote{
+    font-size:10px;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.28em;
+    color:var(--gold-dim);
+    margin:0 0 10px;
+  }
+  footer p.muted{font-size:13px;}
+
+  /* ============================================================
+     7. REVEAL MOTION (fade-up, staggered via --d)
+     ============================================================ */
+  .js .reveal{opacity:0;}
+  .js .reveal.in{
+    opacity:1;
+    animation:fadeUp .62s cubic-bezier(.22,.61,.36,1) backwards;
+    animation-delay:var(--d,0ms);
+  }
+  @keyframes fadeUp{
+    from{opacity:0;transform:translateY(18px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+
+  /* ============================================================
+     8. RESPONSIVE
+     ============================================================ */
+  @media (min-width:641px){
+    .grid.two{grid-template-columns:1fr 1fr;}
+    section{padding:86px 0;}
+  }
+  @media (max-width:640px){
+    body{font-size:15.5px;}
+    section{padding:58px 0;}
+    #about{padding-top:118px;}
+    .wrap{padding:0 18px;}
+    .num li{padding-left:38px;font-size:15px;}
+    .card,.step,.panel,.connect{padding:19px 17px;}
+    .step-badge{width:24px;height:24px;font-size:11px;}
+  }
+  @media (max-width:560px){
+    .brandchip{top:12px;left:12px;font-size:8.5px;letter-spacing:.14em;padding:7px 11px;}
+    .lang{top:12px;right:12px;}
+    .lang button{font-size:9px;letter-spacing:.08em;padding:6px 7px;min-height:28px;}
+  }
+  @media (max-width:400px){
+    .brandchip{font-size:7.5px;letter-spacing:.1em;padding:6px 9px;}
+    .lang button{font-size:8.5px;padding:5px 6px;}
+  }
+
+  /* ============================================================
+     9. REDUCED MOTION
+     ============================================================ */
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .js .reveal{opacity:1;}
+    .js .reveal.in{animation:none;}
+    .hero-title{animation:none;}
+    .topline{animation:none;}
+    .btn-primary:hover,.card:hover,.step:hover,.connect:hover{transform:none;}
+    .bonus-panel,.bonus-inner,.bonus-inner .step,.bonus-toggle .chev{transition:none !important;}
+    .bonus-toggle .star{animation:none !important;}
+    *,*::before,*::after{
+      transition-duration:1ms !important;
+      animation-duration:1ms !important;
+      animation-iteration-count:1 !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="topline" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+
+<div class="brandchip" data-i18n="brandTag">Astra's Recruitment Page</div>
+
+<div class="lang" role="group" aria-label="Language / 언어 / 言語">
+  <button type="button" data-lang="en" aria-pressed="true">EN</button>
+  <span class="sep" aria-hidden="true">|</span>
+  <button type="button" data-lang="ko" aria-pressed="false" lang="ko">한국어</button>
+  <span class="sep" aria-hidden="true">|</span>
+  <button type="button" data-lang="jp" aria-pressed="false" lang="ja">日本語</button>
+</div>
+
+<main>
+
+  <!-- ══════════ SECTION 1 — WELCOME TO ASTRA ══════════ -->
+  <section id="about">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="label" data-i18n="s1Label">Welcome to</p>
+        <h1 class="hero-title">ASTRA</h1>
+        <p class="tagline" data-i18n="s1Tagline">Together, we rise.</p>
+      </div>
+
+      <hr class="divider reveal" />
+
+      <div class="reveal">
+        <p class="lead" data-i18n="s1Values">We value fairness, respect, unity, and transparency.</p>
+        <p class="muted" data-i18n="s1Sub">We grow stronger together — through shared events, clear rules, regular communication, and honest effort.</p>
+      </div>
+
+      <div class="cta-wrap reveal" style="margin-top:34px;">
+        <button type="button" class="btn btn-primary btn-block" id="joinBtn" data-i18n="joinBtn">Join us</button>
+        <p class="btn-note" data-i18n="scrollNote">Scroll down. Read the process first. Do not skip.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ SECTION 02 — READ FIRST ══════════ -->
+  <section id="recruit">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="label" data-i18n="s2Label">Section 02 — Read First</p>
+        <h2 class="section-title" data-i18n="recruitTitle">Read first — Recruitment Info</h2>
+      </div>
+
+      <div class="warn reveal" role="note">
+        <p data-i18n="warning">Important: This does not mean you are immediately accepted. (Going through these steps does not mean guaranteed acceptance)</p>
+      </div>
+
+      <div class="reveal">
+        <div class="subhead"><span data-i18n="reqHead">Requirements</span></div>
+        <ol class="num">
+          <li><em>Active on Discord.</em> <span data-i18n="req1b">(Announcements, war commands, boss timers, voice chat, hangout).</span></li>
+          <li data-i18n="req2">Willing to join events: Boss Hunts, Alliance Wars, World Dungeons, PvP Events.</li>
+          <li data-i18n="req3">Respectful, positive attitude. No toxicity or aggressive behavior.</li>
+          <li data-i18n="req4">Fill out data sheets (item tracking and progression logs).</li>
+          <li data-i18n="req5">Notify leaders in advance if you cannot attend or will be away.</li>
+        </ol>
+        <ol class="num cp" style="margin-top:20px;">
+          <li data-i18n="cpLabel">Combat Power: ASTRA 125k / ASTRO 100k (Subject to change)</li>
+        </ol>
+      </div>
+
+      <div class="reveal">
+        <div class="subhead"><span data-i18n="notesHead">Important Notes</span></div>
+        <ol class="num">
+          <li data-i18n="note1">Joining Discord does not mean acceptance. Leaders review applications and notify approved players.</li>
+          <li data-i18n="note2">After joining, leaders observe how you play with the group before deciding on reward rank eligibility.</li>
+          <li data-i18n="note3">Players on other servers can join the transfer plan at the next server transfer event.</li>
+        </ol>
+      </div>
+
+      <div class="panel reveal">
+        <h4 data-i18n="discordNoticeHead">Discord Notice</h4>
+        <p class="small" data-i18n="discordNotice">You will need access to Discord for the application process. If the Discord link doesn't work, DM zkyz#2168.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ HIGHLIGHTS (moved up — no section label) ══════════ -->
+  <section id="highlights">
+    <div class="wrap">
+      <div class="reveal">
+        <h2 class="section-title" data-i18n="s4Title">What we do</h2>
+      </div>
+
+      <hr class="divider reveal" />
+
+      <div class="grid two">
+        <div class="card hl reveal" data-tilt>
+          <span class="glyph">01</span>
+          <h3 data-i18n="hl1">Alliance War</h3>
+          <p class="small" data-i18n="hl1b">Work together and follow shared commands.</p>
+        </div>
+        <div class="card hl reveal" data-tilt>
+          <span class="glyph">02</span>
+          <h3 data-i18n="hl2">Field Boss Hunts</h3>
+          <p class="small" data-i18n="hl2b">Join group hunts and support the team.</p>
+        </div>
+        <div class="card hl reveal" data-tilt>
+          <span class="glyph">03</span>
+          <h3 data-i18n="hl3">PvP Events</h3>
+          <p class="small" data-i18n="hl3b">Participate, practice, and improve together.</p>
+        </div>
+        <div class="card hl reveal" data-tilt>
+          <span class="glyph">04</span>
+          <h3 data-i18n="hl4">Discord Voice Chat</h3>
+          <p class="small" data-i18n="hl4b">Join voice chat to coordinate or hang out.</p>
+        </div>
+        <div class="card hl reveal" data-tilt>
+          <span class="glyph">05</span>
+          <h3 data-i18n="hl5">Fair Loot System</h3>
+          <p class="small" data-i18n="hl5b">Rewards and opportunities are based on effort and participation.</p>
+        </div>
+        <div class="card hl reveal" data-tilt>
+          <span class="glyph">06</span>
+          <h3 data-i18n="hl6">Transparency</h3>
+          <p class="small" data-i18n="hl6b">We believe in transparency. You will learn more about this as we go on.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ SECTION 03 — HOW TO APPLY ══════════ -->
+  <section id="apply">
+    <div class="wrap">
+      <div class="reveal">
+        <p class="label" data-i18n="s3Label">Section 03 — How to Apply</p>
+        <h2 class="section-title" data-i18n="s3Title">Step by step</h2>
+        <p class="muted" style="margin-top:16px;" data-i18n="s3Intro">Follow these steps. Missing a step will slow down your application.</p>
+      </div>
+
+      <hr class="divider reveal" />
+
+      <!-- STEP 1 — Send basic info -->
+      <div class="step reveal" data-tilt>
+        <div class="step-head">
+          <span class="step-badge" aria-hidden="true">1</span>
+          <h3 class="step-title" data-i18n="step1">Step 1 — Send basic info</h3>
+        </div>
+        <div class="channel"><i aria-hidden="true"></i><span>#basic-info</span></div>
+        <p data-i18n="stepABody">Send basic info in Discord channel #basic-info using this template:</p>
+        <div class="tpl">
+          <ul>
+            <li data-i18n="tpl1">IGN</li>
+            <li data-i18n="tpl2">Combat Power</li>
+            <li data-i18n="tpl3">Current Server</li>
+            <li data-i18n="tpl4">Nationality</li>
+            <li data-i18n="tpl5">Reason and Goal for joining</li>
+          </ul>
+        </div>
+        <div class="opt-head" style="margin:16px 0 0;">
+          <p class="opt-title" data-i18n="tplCopyNote">Copy template</p>
+          <button type="button" class="copy" data-i18n="copy" data-copy="IGN:&#10;Combat Power:&#10;Current Server:&#10;Nationality:&#10;Reason and Goal for joining:">Copy</button>
+        </div>
+      </div>
+
+      <!-- STEP 2 — What happens after -->
+      <div class="step reveal" data-tilt>
+        <div class="step-head">
+          <span class="step-badge" aria-hidden="true">2</span>
+          <h3 class="step-title" data-i18n="step2">Step 2 — What happens after</h3>
+        </div>
+        <ol class="num">
+          <li data-i18n="stepC1">Leaders review your information. If approved, the leaders will approve your application in-game.</li>
+          <li data-i18n="stepC2">After acceptance, your Discord role and database information will be updated. Your IGN will be added to our database.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ SECTION 05 — DISCORD / CONNECT ══════════ -->
+  <section id="connect">
+    <div class="wrap">
+      <div class="connect reveal" data-tilt>
+        <p class="label sm" data-i18n="s5Label">Section 05 — Discord / Connect</p>
+        <p class="connect-text" data-i18n="s5Text">Only after reading above.</p>
+
+        <div class="cta-wrap" style="margin-top:22px;">
+          <a class="btn btn-primary btn-block" href="https://discord.gg/V43JztqbeE" target="_blank" rel="noopener noreferrer" data-i18n="discordBtn">Join Discord</a>
+        </div>
+
+        <p class="fallback" data-i18n="fallback">If the Discord link doesn't work, DM <b>zkyz#2168</b>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ BONUS TEST STEP (hidden last step — revealed after Discord) ══════════ -->
+  <section id="bonus" aria-label="Bonus test step">
+    <div class="wrap">
+      <div class="bonus-wrap reveal">
+        <button type="button" class="bonus-toggle" id="bonusToggle" aria-expanded="false" aria-controls="bonusPanel">
+          <span class="star" aria-hidden="true">★</span>
+          <span data-i18n="bonusToggle">Bonus step</span>
+          <span class="chev" aria-hidden="true">▾</span>
+        </button>
+        <div class="bonus-panel" id="bonusPanel" role="region" aria-label="Bonus test step">
+          <div class="bonus-inner">
+            <div class="step bonus" data-tilt>
+              <p class="label" data-i18n="bonusLabel">Bonus test step</p>
+              <div class="step-head">
+                <span class="step-badge" aria-hidden="true">★</span>
+                <h3 class="step-title" data-i18n="bonusTitle">Send this message in chat</h3>
+              </div>
+              <div class="channel"><i aria-hidden="true"></i><span>#shire-chat</span></div>
+              <p data-i18n="bonusBody">Send a message in Discord channel #shire-chat.</p>
+              <div class="opt-head">
+                <p class="opt-title" data-i18n="bonusCopyNote">Copy message</p>
+                <button type="button" class="copy" data-i18n="copy" data-copy="I have read and understood the recruitment process. Looking forward to growing together with the guild.">Copy</button>
+              </div>
+              <blockquote class="quote" data-i18n="bonusQuote">“I have read and understood the recruitment process. Looking forward to growing together with the guild.”</blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <hr class="divider" style="margin:0 0 26px;" />
+    <p class="fnote" data-i18n="footerNote">Astra · Lordnine: Infinite Class</p>
+    <p class="muted small" data-i18n="footerTag">Together, we rise.</p>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   TRANSLATION DATA (Option B — key sections)
+   ============================================================ */
+const I18N = {
+  en: {
+    brandTag: "Astra's Recruitment Page",
+    joinBtn: "Join us",
+    scrollNote: "Scroll down. Read the process first. Do not skip.",
+    recruitTitle: "Read first — Recruitment Info",
+    warning: "Important: This does not mean you are immediately accepted. (Going through these steps does not mean guaranteed acceptance)",
+    cpLabel: "Combat Power: ASTRA 125k / ASTRO 100k (Subject to change)",
+    optA: "Option A — Already applied",
+    optB: "Option B — Waiting for next transfer",
+    discordBtn: "Join Discord",
+    fallback: "If the Discord link doesn't work, DM zkyz#2168.",
+
+    s1Label: "Welcome to",
+    s1Tagline: "Together, we rise.",
+    s1Values: "We value fairness, respect, unity, and transparency.",
+    s1Sub: "We grow stronger together — through shared events, clear rules, regular communication, and honest effort.",
+
+    s2Label: "Section 02 — Read First",
+    reqHead: "Requirements",
+    req1b: "(Announcements, war commands, boss timers, voice chat, hangout).",
+    req2: "Willing to join events: Boss Hunts, Alliance Wars, World Dungeons, PvP Events.",
+    req3: "Respectful, positive attitude. No toxicity or aggressive behavior.",
+    req4: "Fill out data sheets (item tracking and progression logs).",
+    req5: "Notify leaders in advance if you cannot attend or will be away.",
+    notesHead: "Important Notes",
+    note1: "Joining Discord does not mean acceptance. Leaders review applications and notify approved players.",
+    note2: "After joining, leaders observe how you play with the group before deciding on reward rank eligibility.",
+    note3: "Players on other servers can join the transfer plan at the next server transfer event.",
+    discordNoticeHead: "Discord Notice",
+    discordNotice: "You will need access to Discord for the application process. If the Discord link doesn't work, DM zkyz#2168.",
+
+    s4Title: "What we do",
+    hl1: "Alliance War",
+    hl1b: "Work together and follow shared commands.",
+    hl2: "Field Boss Hunts",
+    hl2b: "Join group hunts and support the team.",
+    hl3: "PvP Events",
+    hl3b: "Participate, practice, and improve together.",
+    hl4: "Discord Voice Chat",
+    hl4b: "Join voice chat to coordinate or hang out.",
+    hl5: "Fair Loot System",
+    hl5b: "Rewards and opportunities are based on effort and participation.",
+    hl6: "Transparency",
+    hl6b: "We believe in transparency. You will learn more about this as we go on.",
+
+    s3Label: "Section 03 — How to Apply",
+    s3Title: "Step by step",
+    s3Intro: "Follow these steps. Missing a step will slow down your application.",
+    step1: "Step 1 — Send basic info",
+    step2: "Step 2 — What happens after",
+    stepABody: "Send basic info in Discord channel #basic-info using this template:",
+    tpl1: "IGN",
+    tpl2: "Combat Power",
+    tpl3: "Current Server",
+    tpl4: "Nationality",
+    tpl5: "Reason and Goal for joining",
+    tplCopyNote: "Copy template",
+    stepC1: "Leaders review your information. If approved, the leaders will approve your application in-game.",
+    stepC2: "After acceptance, your Discord role and database information will be updated. Your IGN will be added to our database.",
+    copy: "Copy",
+    copied: "Copied",
+
+    s5Label: "Section 05 — Discord / Connect",
+    s5Text: "Only after reading above.",
+
+    bonusLabel: "Bonus test step",
+    bonusToggle: "Bonus step",
+    bonusTitle: "Send this message in chat",
+    bonusBody: "Send a message in Discord channel #shire-chat.",
+    bonusCopyNote: "Copy message",
+    bonusQuote: "“I have read and understood the recruitment process. Looking forward to growing together with the guild.”",
+
+    footerNote: "Astra · Lordnine: Infinite Class",
+    footerTag: "Together, we rise."
+  },
+
+  ko: {
+    brandTag: "아스트라 모집 페이지",
+    joinBtn: "가입하기",
+    scrollNote: "아래로 스크롤하여 과정을 먼저 읽으세요. 건너뛰지 마세요.",
+    recruitTitle: "먼저 읽기 — 모집 정보",
+    warning: "중요: 이 정보가 즉시 수용을 의미하지는 않습니다. (이 단계를 진행한다고 해서 수용이 보장되는 것은 아닙니다)",
+    cpLabel: "전투력: ASTRA 125k / ASTRO 100k (변경될 수 있음)",
+    optA: "옵션 A — 이미 신청함",
+    optB: "옵션 B — 다음 서버 이동 대기",
+    discordBtn: "디스코드 참여",
+    fallback: "디스코드 링크가 작동하지 않으면 zkyz#2168 에게 DM.",
+
+    s1Label: "환영합니다",
+    s1Tagline: "함께라면, 우리는 더 높이 오릅니다.",
+    s1Values: "저희는 공정함, 존중, 연대, 투명함을 중요하게 생각합니다.",
+    s1Sub: "함께하는 이벤트, 명확한 규칙, 꾸준한 소통, 성실한 노력을 통해 함께 더 강해집니다.",
+
+    s2Label: "섹션 02 — 먼저 읽기",
+    reqHead: "필수 조건",
+    req1b: "(공지 사항, 공성 명령, 보스 타이머, 음성 채팅, 잡담 방).",
+    req2: "이벤트 참여에 협조적이어야 합니다: 보스 사냥, 연합전, 월드 던전, PvP 이벤트.",
+    req3: "존중하는 긍정적인 태도. 비난이나 공격적인 행동은 금지입니다.",
+    req4: "데이터 시트 작성 (아이템 기록 및 성장 기록).",
+    req5: "참석이 어렵거나 자리를 비울 경우 미리 리더에게 알려주세요.",
+    notesHead: "중요 안내",
+    note1: "디스코드에 참여한다고 해서 가입이 승인되는 것은 아닙니다. 리더가 신청서를 검토하고 승인된 플레이어에게 알려드립니다.",
+    note2: "가입 후 리더가 보상 등급 대상 여부를 결정하기 전에 함께 플레이하는 모습을 지켜봅니다.",
+    note3: "다른 서버 플레이어는 다음 서버 이동 이벤트 때 이전 계획에 참여할 수 있습니다.",
+    discordNoticeHead: "디스코드 안내",
+    discordNotice: "신청 절차를 위해 디스코드 사용이 필요합니다. 디스코드 링크가 작동하지 않으면 zkyz#2168 에게 DM.",
+
+    s4Title: "저희가 하는 일",
+    hl1: "연합전",
+    hl1b: "함께 움직이고 공용 명령을 따릅니다.",
+    hl2: "필드 보스 사냥",
+    hl2b: "단체 사냥에 참여하고 팀을 지원합니다.",
+    hl3: "PvP 이벤트",
+    hl3b: "함께 참여하고, 연습하고, 성장합니다.",
+    hl4: "디스코드 음성 채팅",
+    hl4b: "전투 조율이나 친목을 위해 음성 채팅에 참여하세요.",
+    hl5: "공정한 전리품 시스템",
+    hl5b: "보상과 기회는 노력과 참여도를 기준으로 합니다.",
+    hl6: "투명성",
+    hl6b: "저희는 투명성을 믿습니다. 이 부분은 함께 진행하며 더 알려드리겠습니다.",
+
+    s3Label: "섹션 03 — 신청 방법",
+    s3Title: "단계별 안내",
+    s3Intro: "각 단계를 따르세요. 단계를 놓치면 신청이 늦어질 수 있습니다.",
+    step1: "1단계 — 기본 정보 보내기",
+    step2: "2단계 — 이후 절차",
+    stepABody: "디스코드 채널 #basic-info 에 아래 양식으로 기본 정보를 보내주세요:",
+    tpl1: "IGN (게임 닉네임)",
+    tpl2: "전투력",
+    tpl3: "현재 서버",
+    tpl4: "국적",
+    tpl5: "가입 이유와 목표",
+    tplCopyNote: "양식 복사",
+    stepC1: "리더가 정보를 검토합니다. 승인되면 리더가 게임 내 신청을 승인합니다.",
+    stepC2: "승인 후 디스코드 역할과 데이터베이스 정보가 업데이트됩니다. IGN이 저희 데이터베이스에 추가됩니다.",
+    copy: "복사",
+    copied: "복사됨",
+
+    s5Label: "섹션 05 — 디스코드 / 연결",
+    s5Text: "위 내용을 모두 읽은 후에 참여하세요.",
+
+    bonusLabel: "보너스 테스트 단계",
+    bonusToggle: "보너스 단계",
+    bonusTitle: "채팅에 이 메시지 보내기",
+    bonusBody: "디스코드 채널 #shire-chat 에 메시지를 보내세요.",
+    bonusCopyNote: "메시지 복사",
+    bonusQuote: "“모집 절차를 읽고 이해했습니다. 함께 성장할 수 있기를 기대합니다.”",
+
+    footerNote: "Astra · Lordnine: Infinite Class",
+    footerTag: "함께라면, 우리는 더 높이 오릅니다."
+  },
+
+  jp: {
+    brandTag: "ASTRA 募集ページ",
+    joinBtn: "参加する",
+    scrollNote: "下にスクロールしてプロセスを最初に読んでください。スキップしないでください。",
+    recruitTitle: "最初に読む — 募集情報",
+    warning: "重要：これは即時受け入れを意味するものではありません。（これらの手順を踏んでも、受け入れが保証されるわけではありません）",
+    cpLabel: "戦闘力：ASTRA 125k / ASTRO 100k (変更される場合あり)",
+    optA: "オプション A — すでに申請済み",
+    optB: "オプション B — 次のサーバー移動を待機",
+    discordBtn: "Discord に参加",
+    fallback: "Discord リンクが機能しない場合は zkyz#2168 に DM。",
+
+    s1Label: "ようこそ",
+    s1Tagline: "共に、高く昇る。",
+    s1Values: "私たちは公平さ、敬意、団結、透明性を大切にします。",
+    s1Sub: "共有イベント、明確なルール、定期的なコミュニケーション、誠実な努力を通じて、共に強くなります。",
+
+    s2Label: "セクション 02 — 最初に読む",
+    reqHead: "参加条件",
+    req1b: "（お知らせ、戦争指示、ボス討伐時間、ボイスチャット、雑談）。",
+    req2: "イベントへの参加に協力的であること：ボス討伐、連合戦争、ワールドダンジョン、PvP イベント。",
+    req3: "礼儀正しく前向きな態度。誹謗中傷や攻撃的な行為は禁止です。",
+    req4: "データシートの記入（アイテム記録と成長記録）。",
+    req5: "参加できない場合や離席する場合は、事前にリーダーへ連絡してください。",
+    notesHead: "重要な注意事項",
+    note1: "Discord に参加しても受け入れが確定するわけではありません。リーダーが申請を確認し、承認されたプレイヤーに通知します。",
+    note2: "参加後、報酬ランクの対象を決める前に、リーダーがグループプレイの様子を見て判断します。",
+    note3: "他のサーバーのプレイヤーは、次のサーバー移転イベントで移転プランに参加できます。",
+    discordNoticeHead: "Discord について",
+    discordNotice: "申請手続きには Discord へのアクセスが必要です。Discord リンクが機能しない場合は zkyz#2168 に DM。",
+
+    s4Title: "私たちの活動",
+    hl1: "連合戦争",
+    hl1b: "共に行動し、共有の指示に従います。",
+    hl2: "フィールドボス討伐",
+    hl2b: "グループ討伐に参加し、チームを支援します。",
+    hl3: "PvP イベント",
+    hl3b: "参加し、練習し、共に上達します。",
+    hl4: "Discord ボイスチャット",
+    hl4b: "連携や雑談のためにボイスチャットに参加しましょう。",
+    hl5: "公平なルートシステム",
+    hl5b: "報酬と機会は努力と参加度に基づきます。",
+    hl6: "透明性",
+    hl6b: "私たちは透明性を重視します。この点は進みながら詳しくお伝えします。",
+
+    s3Label: "セクション 03 — 申請方法",
+    s3Title: "手順の説明",
+    s3Intro: "手順に従ってください。手順が不足すると申請が遅れます。",
+    step1: "ステップ 1 — 基本情報を送信",
+    step2: "ステップ 2 — その後の流れ",
+    stepABody: "Discord チャンネル #basic-info に、このテンプレートで基本情報を送信してください：",
+    tpl1: "IGN（ゲーム内ニックネーム）",
+    tpl2: "戦闘力",
+    tpl3: "現在のサーバー",
+    tpl4: "国籍",
+    tpl5: "参加の理由と目標",
+    tplCopyNote: "テンプレートをコピー",
+    stepC1: "リーダーが情報を確認します。承認されると、リーダーがゲーム内で申請を承認します。",
+    stepC2: "承認後、Discord のロールとデータベース情報が更新されます。IGN はデータベースに追加されます。",
+    copy: "コピー",
+    copied: "コピーしました",
+
+    s5Label: "セクション 05 — Discord / 連絡",
+    s5Text: "上記をすべて読んでからご参加ください。",
+
+    bonusLabel: "ボーナステストステップ",
+    bonusToggle: "ボーナスステップ",
+    bonusTitle: "チャットにこのメッセージを送信",
+    bonusBody: "Discord チャンネル #shire-chat にメッセージを送信してください。",
+    bonusCopyNote: "メッセージをコピー",
+    bonusQuote: "「募集プロセスを読んで理解しました。一緒に成長できることを楽しみにしています。」",
+
+    footerNote: "Astra · Lordnine: Infinite Class",
+    footerTag: "共に、高く昇る。"
+  }
+};
+
+/* ============================================================
+   LANGUAGE SWITCH
+   ============================================================ */
+const langButtons = document.querySelectorAll('.lang button');
+
+function currentLang(){
+  const active = document.querySelector('.lang button[aria-pressed="true"]');
+  return active ? active.dataset.lang : 'en';
+}
+
+function applyLang(code){
+  const dict = I18N[code] || I18N.en;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    if(dict[key] !== undefined) el.textContent = dict[key];
+  });
+  /* keep the Discord handle bold inside the fallback line */
+  const fb = document.querySelector('[data-i18n="fallback"]');
+  if(fb) fb.innerHTML = (dict.fallback || '').replace(/zkyz#2168/g, '<b>zkyz#2168</b>');
+  langButtons.forEach(b=> b.setAttribute('aria-pressed', String(b.dataset.lang === code)));
+  document.documentElement.lang = (code === 'jp') ? 'ja' : (code === 'ko' ? 'ko' : 'en');
+  try{ localStorage.setItem('astra-lang', code); }catch(e){}
+}
+
+langButtons.forEach(btn=>{
+  btn.addEventListener('click', ()=> applyLang(btn.dataset.lang));
+});
+
+try{
+  const saved = localStorage.getItem('astra-lang');
+  if(saved && I18N[saved]) applyLang(saved);
+}catch(e){}
+
+/* ============================================================
+   SMOOTH SCROLL — "Join us" → Section 02
+   ============================================================ */
+document.getElementById('joinBtn').addEventListener('click', ()=>{
+  const target = document.getElementById('recruit');
+  if(!target) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const top = target.getBoundingClientRect().top + window.pageYOffset - 18;
+  window.scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' });
+  window.setTimeout(()=>{
+    const h = target.querySelector('h2');
+    if(h){ h.setAttribute('tabindex','-1'); h.focus({preventScroll:true}); }
+  }, reduce ? 0 : 620);
+});
+
+/* ============================================================
+   FADE-UP ON SCROLL — Intersection Observer, ~60ms stagger
+   ============================================================ */
+const revealEls = document.querySelectorAll('.reveal');
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if('IntersectionObserver' in window && !reducedMotion){
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting) return;
+      const el = entry.target;
+      const parent = el.parentElement;
+      const siblings = parent ? Array.prototype.slice.call(parent.children).filter(c=>c.classList && c.classList.contains('reveal')) : [];
+      const idx = Math.max(0, siblings.indexOf(el));
+      el.style.setProperty('--d', Math.min(idx * 60, 360) + 'ms');
+      el.classList.add('in');
+      io.unobserve(el);
+    });
+  },{ root:null, rootMargin:'0px 0px -8% 0px', threshold:0.1 });
+
+  revealEls.forEach(el=> io.observe(el));
+}else{
+  revealEls.forEach(el=> el.classList.add('in'));
+}
+
+/* ============================================================
+   3D CARD TILT + GOLD SHEEN (fine pointers only)
+   ============================================================ */
+if(window.matchMedia('(hover: hover) and (pointer: fine)').matches && !reducedMotion){
+  document.querySelectorAll('[data-tilt]').forEach(el=>{
+    el.addEventListener('pointermove', e=>{
+      const r = el.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width;
+      const py = (e.clientY - r.top) / r.height;
+      el.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
+      el.style.setProperty('--my', (py * 100).toFixed(1) + '%');
+      const rx = ((0.5 - py) * 5).toFixed(2);
+      const ry = ((px - 0.5) * 7).toFixed(2);
+      el.style.transform = 'perspective(750px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) translateY(-3px)';
+    });
+    el.addEventListener('pointerleave', ()=>{ el.style.transform = ''; });
+  });
+}
+
+/* ============================================================
+   COPY TO CLIPBOARD
+   ============================================================ */
+document.querySelectorAll('.copy').forEach(btn=>{
+  btn.addEventListener('click', async ()=>{
+    const dict = I18N[currentLang()] || I18N.en;
+    const text = btn.getAttribute('data-copy') || '';
+    try{
+      await navigator.clipboard.writeText(text);
+    }catch(e){
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly','');
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try{ document.execCommand('copy'); }catch(err){}
+      document.body.removeChild(ta);
+    }
+    const original = btn.textContent;
+    btn.textContent = dict.copied || 'Copied';
+    window.setTimeout(()=>{ btn.textContent = original; }, 1400);
+  });
+});
+
+/* ============================================================
+   BONUS — hidden last step (expand / collapse)
+   ============================================================ */
+const bonusToggle = document.getElementById('bonusToggle');
+const bonusPanel = document.getElementById('bonusPanel');
+if(bonusToggle && bonusPanel){
+  bonusToggle.addEventListener('click', ()=>{
+    const open = bonusPanel.classList.toggle('open');
+    bonusToggle.setAttribute('aria-expanded', String(open));
+    if(open){
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.setTimeout(()=>{
+        bonusPanel.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block:'nearest' });
+      }, reduce ? 0 : 520);
+    }
+  });
+}
+
+/* ============================================================
+   IMMERSIVE MOVING BACKGROUND (canvas)
+   Layers: nebula drift · dot grid (spec look, drifting) ·
+   twinkling stars · rising gold embers · shooting stars ·
+   mouse parallax. Static single frame under reduced motion.
+   ============================================================ */
+(function(){
+  const canvas = document.getElementById('bg');
+  if(!canvas || !canvas.getContext) return;
+  const ctx = canvas.getContext('2d');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let W = 0, H = 0, DPR = 1;
+  let stars = [], embers = [];
+  let meteor = null, nextMeteor = 2600;
+  let mx = 0, my = 0, tx = 0, ty = 0;
+  let raf = null, last = 0;
+
+  /* soft gold glow sprite for embers */
+  const sprite = document.createElement('canvas');
+  sprite.width = sprite.height = 64;
+  (function(){
+    const g = sprite.getContext('2d');
+    const gr = g.createRadialGradient(32,32,0,32,32,32);
+    gr.addColorStop(0,'rgba(244,220,160,1)');
+    gr.addColorStop(0.35,'rgba(231,196,119,0.55)');
+    gr.addColorStop(1,'rgba(231,196,119,0)');
+    g.fillStyle = gr;
+    g.fillRect(0,0,64,64);
+  })();
+
+  function rand(a,b){ return a + Math.random() * (b - a); }
+
+  function spawnEmber(anywhere){
+    return {
+      x: rand(0, W),
+      y: anywhere ? rand(0, H) : H + 24,
+      vy: rand(10, 32),
+      amp: rand(6, 24),
+      fr: rand(0.3, 0.9),
+      ph: rand(0, 6.283),
+      s: rand(2.5, 7),
+      a: rand(0.25, 0.75)
+    };
+  }
+
+  function build(){
+    const nS = Math.min(170, Math.round(W * H / 9000));
+    stars = [];
+    for(let i = 0; i < nS; i++){
+      stars.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: rand(0.3, 1.4),
+        tw: rand(0, 6.283),
+        ts: rand(0.4, 1.4),
+        vy: rand(3, 9),
+        gold: Math.random() < 0.22
+      });
+    }
+    const nE = Math.min(85, Math.round(W * H / 22000));
+    embers = [];
+    for(let i = 0; i < nE; i++) embers.push(spawnEmber(true));
+  }
+
+  function resize(){
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth;
+    H = window.innerHeight;
+    canvas.width = Math.round(W * DPR);
+    canvas.height = Math.round(H * DPR);
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    build();
+    if(reduced) draw(0, 0);
+  }
+
+  /* slow drifting nebula glows */
+  function nebula(t){
+    const blobs = [
+      { cx:.30, cy:.36, r:.55, c:'rgba(126,96,46,',  a:.14, fx:.050, fy:.040, px:0 },
+      { cx:.72, cy:.62, r:.62, c:'rgba(84,62,30,',   a:.16, fx:.040, fy:.060, px:1 },
+      { cx:.52, cy:.85, r:.50, c:'rgba(96,70,34,',   a:.10, fx:.060, fy:.030, px:2 }
+    ];
+    for(const b of blobs){
+      const x = (b.cx + Math.sin(t * b.fx + b.px * 2) * 0.06) * W - mx * 10;
+      const y = (b.cy + Math.cos(t * b.fy + b.px * 2) * 0.05) * H - my * 8;
+      const R = b.r * Math.min(W, H) * 1.4;
+      const g = ctx.createRadialGradient(x, y, 0, x, y, R);
+      g.addColorStop(0, b.c + b.a + ')');
+      g.addColorStop(1, b.c + '0)');
+      ctx.fillStyle = g;
+      ctx.fillRect(x - R, y - R, R * 2, R * 2);
+    }
+  }
+
+  /* spec dot grid, now drifting + parallax, radially masked */
+  function dots(t){
+    const sp = 80;
+    const ox = ((-mx * 14 - t * 4) % sp + sp) % sp - sp;
+    const oy = ((-my * 10 + t * 2.5) % sp + sp) % sp - sp;
+    ctx.fillStyle = '#c8b181';
+    for(let x = ox; x < W + sp; x += sp){
+      for(let y = oy; y < H + sp; y += sp){
+        const dx = (x - W / 2) / (W / 2);
+        const dy = (y - H / 2) / (H / 2);
+        const d = Math.sqrt(dx * dx + dy * dy * 1.15);
+        let m = 1 - d / 0.92;
+        if(m <= 0) continue;
+        m = m * m * 0.3;
+        if(m < 0.01) continue;
+        ctx.globalAlpha = m;
+        ctx.beginPath();
+        ctx.arc(x, y, 0.7, 0, 6.2832);
+        ctx.fill();
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function starField(t, dt){
+    for(const s of stars){
+      s.y += s.vy * dt;
+      if(s.y > H + 4){ s.y = -4; s.x = Math.random() * W; }
+      const x = s.x - mx * 20;
+      const y = s.y - my * 14;
+      const tw = 0.35 + 0.65 * (0.5 + 0.5 * Math.sin(t * s.ts * 2 + s.tw));
+      ctx.globalAlpha = tw * (s.gold ? 0.9 : 0.7);
+      ctx.fillStyle = s.gold ? '#e7c477' : '#e9e5dc';
+      ctx.beginPath();
+      ctx.arc(x, y, s.r, 0, 6.2832);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function emberField(t, dt){
+    for(const e of embers){
+      e.y -= e.vy * dt;
+      if(e.y < -24){ Object.assign(e, spawnEmber(false)); }
+      const x = e.x + Math.sin(t * e.fr + e.ph) * e.amp - mx * 30;
+      const y = e.y - my * 20;
+      const fl = e.a * (0.7 + 0.3 * Math.sin(t * 2.2 + e.ph * 3));
+      ctx.globalAlpha = fl;
+      ctx.drawImage(sprite, x - e.s, y - e.s, e.s * 2, e.s * 2);
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function drawMeteor(dt){
+    if(!meteor){
+      nextMeteor -= dt * 1000;
+      if(nextMeteor <= 0){
+        meteor = {
+          x: rand(W * 0.25, W * 0.9),
+          y: rand(-40, H * 0.25),
+          vx: rand(-520, -360),
+          vy: rand(200, 320),
+          life: 1
+        };
+        nextMeteor = rand(7000, 16000);
+      }
+    }
+    if(meteor){
+      meteor.life -= dt / 900;
+      meteor.x += meteor.vx * dt;
+      meteor.y += meteor.vy * dt;
+      if(meteor.life <= 0 || meteor.x < -220 || meteor.y > H + 90){ meteor = null; return; }
+      const fade = Math.max(0, Math.min(1, meteor.life * 3));
+      const len = 130;
+      const nl = Math.hypot(meteor.vx, meteor.vy) || 1;
+      const txp = meteor.x - meteor.vx / nl * len;
+      const typ = meteor.y - meteor.vy / nl * len;
+      const g = ctx.createLinearGradient(meteor.x, meteor.y, txp, typ);
+      g.addColorStop(0, 'rgba(241,213,150,' + (0.85 * fade) + ')');
+      g.addColorStop(1, 'rgba(231,196,119,0)');
+      ctx.strokeStyle = g;
+      ctx.lineWidth = 1.6;
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(meteor.x, meteor.y);
+      ctx.lineTo(txp, typ);
+      ctx.stroke();
+      ctx.globalAlpha = fade;
+      ctx.fillStyle = '#f4dca0';
+      ctx.beginPath();
+      ctx.arc(meteor.x, meteor.y, 1.8, 0, 6.2832);
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+  }
+
+  function draw(t, dt){
+    ctx.clearRect(0, 0, W, H);
+    nebula(t);
+    dots(t);
+    starField(t, dt);
+    drawMeteor(dt);
+    emberField(t, dt);
+  }
+
+  function loop(ts){
+    if(!last) last = ts;
+    let dt = (ts - last) / 1000;
+    last = ts;
+    if(dt > 0.05) dt = 0.05;
+    mx += (tx - mx) * 0.045;
+    my += (ty - my) * 0.045;
+    draw(ts / 1000, dt);
+    raf = requestAnimationFrame(loop);
+  }
+
+  window.addEventListener('resize', resize);
+  window.addEventListener('pointermove', e=>{
+    if(e.pointerType && e.pointerType !== 'mouse') return;
+    tx = (e.clientX / W) * 2 - 1;
+    ty = (e.clientY / H) * 2 - 1;
+  }, { passive:true });
+  document.addEventListener('visibilitychange', ()=>{
+    if(document.hidden){
+      if(raf) cancelAnimationFrame(raf);
+      raf = null; last = 0;
+    }else if(!reduced && !raf){
+      raf = requestAnimationFrame(loop);
+    }
+  });
+
+  resize();
+  if(reduced){
+    draw(0, 0); /* one static frame, no animation */
+  }else{
+    raf = requestAnimationFrame(loop);
+  }
+})();
+</script>
+</body>
+</html>
