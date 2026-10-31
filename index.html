@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#0b0b0f" />
 <title>ASTRA — Recruitment · Lordnine: Infinite Class Guild</title>
 <meta name="description" content="ASTRA — a Lordnine: Infinite Class guild. Together, we rise. Fairness, respect, unity, transparency. Read the recruitment info, then apply through Discord." />
@@ -105,7 +105,7 @@
   .wrap{max-width:var(--max);margin:0 auto;padding:0 22px;}
   .cta-wrap{max-width:var(--cta);margin-left:auto;margin-right:auto;}
 
-  section{padding:74px 0;}
+  section{padding:74px 0;scroll-margin-top:84px;}
   section + section{border-top:1px solid var(--line);}
   #about{padding-top:96px;}
 
@@ -192,8 +192,8 @@
      ============================================================ */
   .brandchip{
     position:fixed;
-    top:14px;
-    left:14px;
+    top:max(14px, env(safe-area-inset-top));
+    left:max(14px, env(safe-area-inset-left));
     z-index:50;
     font-size:10px;
     font-weight:600;
@@ -211,8 +211,8 @@
   }
   .lang{
     position:fixed;
-    top:14px;
-    right:14px;
+    top:max(14px, env(safe-area-inset-top));
+    right:max(14px, env(safe-area-inset-right));
     z-index:50;
     display:flex;
     align-items:center;
@@ -235,7 +235,7 @@
     border:0;
     border-radius:999px;
     padding:7px 11px;
-    min-height:30px;
+    min-height:44px;
     cursor:pointer;
     transition:color var(--t),background var(--t);
     white-space:nowrap;
@@ -261,7 +261,7 @@
     letter-spacing:.14em;
     text-transform:uppercase;
     border-radius:8px;
-    min-height:38px;
+    min-height:48px;
     padding:0 26px;
     cursor:pointer;
     border:1px solid transparent;
@@ -504,7 +504,7 @@
     border:1px solid var(--line);
     border-radius:6px;
     padding:5px 10px;
-    min-height:26px;
+    min-height:40px;
     cursor:pointer;
     transition:color var(--t),border-color var(--t),background var(--t);
   }
@@ -577,7 +577,7 @@
     border:1px dashed rgba(231,196,119,.35);
     border-radius:999px;
     padding:10px 22px;
-    min-height:38px;
+    min-height:40px;
     cursor:pointer;
     transition:color var(--t),border-color var(--t);
   }
@@ -649,9 +649,9 @@
     .step-badge{width:24px;height:24px;font-size:11px;}
   }
   @media (max-width:560px){
-    .brandchip{top:12px;left:12px;font-size:8.5px;letter-spacing:.14em;padding:7px 11px;}
-    .lang{top:12px;right:12px;}
-    .lang button{font-size:9px;letter-spacing:.08em;padding:6px 7px;min-height:28px;}
+    .brandchip{top:max(12px, env(safe-area-inset-top));left:max(12px, env(safe-area-inset-left));font-size:8.5px;letter-spacing:.14em;padding:7px 11px;}
+    .lang{top:max(12px, env(safe-area-inset-top));right:max(12px, env(safe-area-inset-right));}
+    .lang button{font-size:9px;letter-spacing:.08em;padding:6px 7px;min-height:44px;}
   }
   @media (max-width:400px){
     .brandchip{font-size:7.5px;letter-spacing:.1em;padding:6px 9px;}
@@ -675,6 +675,32 @@
       animation-duration:1ms !important;
       animation-iteration-count:1 !important;
     }
+  }
+
+  /* ============================================================
+     10. LARGE-SCREEN SCALING (Batch A)
+     Everything stops growing at ~1440px without this; steps keep
+     the page's relative size sensible on QHD / 4K viewports.
+     ============================================================ */
+  @media (min-width:1800px){ body{zoom:1.15;} }
+  @media (min-width:2600px){ body{zoom:1.35;} }
+  @media (min-width:3400px){ body{zoom:1.55;} }
+
+  /* ============================================================
+     11. PRINT (Batch A) — modelled on the members handbook
+     ============================================================ */
+  @media print{
+    @page{margin:16mm;}
+    html,body{background:#ffffff !important;color:#000000 !important;}
+    body{font-size:11.5pt;line-height:1.55;}
+    #bg,.topline,.vignette,.brandchip,.lang,.copy{display:none !important;}
+    .js .reveal{opacity:1 !important;}
+    section{padding:22px 0;}
+    h1,h2,h3,h4,.hero-title,.tagline{color:#000000 !important;background:none !important;-webkit-text-fill-color:#000000 !important;animation:none !important;}
+    body,p,li,.lead,.label,.subhead span,.card p,.step p,.panel p,.connect p{color:#000000 !important;}
+    .card,.step,.panel,.connect,.tpl ul{border-color:#bbbbbb !important;background:#ffffff !important;}
+    .btn{border:1px solid #000000 !important;color:#000000 !important;background:#ffffff !important;}
+    a{color:#000000 !important;}
   }
 </style>
 </head>
