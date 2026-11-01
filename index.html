@@ -527,6 +527,7 @@
     border-bottom:1px solid var(--line);
   }
   .tpl li:last-child{border-bottom:0;}
+  .tpl-note{margin:12px 2px 0;padding:10px 14px;border-left:2px solid var(--gold-dim);background:rgba(185,159,108,.08);border-radius:0 8px 8px 0;font-size:14px;line-height:1.65;color:var(--text);}
   .tpl li::before{content:"—";position:absolute;left:0;color:var(--gold-dim);}
 
   /* Highlights grid */
@@ -699,6 +700,7 @@
     h1,h2,h3,h4,.hero-title,.tagline{color:#000000 !important;background:none !important;-webkit-text-fill-color:#000000 !important;animation:none !important;}
     body,p,li,.lead,.label,.subhead span,.card p,.step p,.panel p,.connect p{color:#000000 !important;}
     .card,.step,.panel,.connect,.tpl ul{border-color:#bbbbbb !important;background:#ffffff !important;}
+    .tpl-note{border-left-color:#000000 !important;background:#ffffff !important;}
     .btn{border:1px solid #000000 !important;color:#000000 !important;background:#ffffff !important;}
     a{color:#000000 !important;}
   }
@@ -749,7 +751,7 @@
   <section id="recruit">
     <div class="wrap">
       <div class="reveal">
-        <p class="label" data-i18n="s2Label">Section 02 — Read First</p>
+        <p class="label" data-i18n="s2Label">Section 01 — Read First</p>
         <h2 class="section-title" data-i18n="recruitTitle">Read first — Recruitment Info</h2>
       </div>
 
@@ -767,7 +769,7 @@
           <li data-i18n="req5">Notify leaders in advance if you cannot attend or will be away.</li>
         </ol>
         <ol class="num cp" style="margin-top:20px;">
-          <li data-i18n="cpLabel">Combat Power: ASTRA 125k / ASTRO 100k (Subject to change)</li>
+          <li data-i18n="cpLabel">Combat Power: 125k+ joins ASTRO / 135k+ joins ASTRA (Subject to change)</li>
         </ol>
       </div>
 
@@ -835,7 +837,7 @@
   <section id="apply">
     <div class="wrap">
       <div class="reveal">
-        <p class="label" data-i18n="s3Label">Section 03 — How to Apply</p>
+        <p class="label" data-i18n="s3Label">Section 02 — How to Apply</p>
         <h2 class="section-title" data-i18n="s3Title">Step by step</h2>
         <p class="muted" style="margin-top:16px;" data-i18n="s3Intro">Follow these steps. Missing a step will slow down your application.</p>
       </div>
@@ -856,12 +858,16 @@
             <li data-i18n="tpl2">Combat Power</li>
             <li data-i18n="tpl3">Current Server</li>
             <li data-i18n="tpl4">Nationality</li>
-            <li data-i18n="tpl5">Reason and Goal for joining</li>
+            <li data-i18n="tpl5">Languages I can communicate in</li>
+            <li data-i18n="tpl6">Availability (timezone + usual active hours)</li>
+            <li data-i18n="tpl7">Previous Guild &amp; Why I Left</li>
+            <li data-i18n="tpl8">Reason and Goal for joining</li>
           </ul>
+          <p class="tpl-note" data-i18n="tplUnderstand">“I understand that rewards are earned through activity and attendance, and that new members complete a probation period before becoming truly part of the guild.”</p>
         </div>
         <div class="opt-head" style="margin:16px 0 0;">
           <p class="opt-title" data-i18n="tplCopyNote">Copy template</p>
-          <button type="button" class="copy" data-i18n="copy" data-copy="IGN:&#10;Combat Power:&#10;Current Server:&#10;Nationality:&#10;Reason and Goal for joining:">Copy</button>
+          <button type="button" class="copy" data-i18n="copy" data-copy="IGN:&#10;Combat Power:&#10;Current Server:&#10;Nationality:&#10;Languages I can communicate in:&#10;Availability (timezone + usual active hours):&#10;Previous Guild &amp; Why I Left:&#10;Reason and Goal for joining:&#10;&#10;I understand that rewards are earned through activity and attendance, and that new members complete a probation period before becoming truly part of the guild.">Copy</button>
         </div>
       </div>
 
@@ -883,7 +889,7 @@
   <section id="connect">
     <div class="wrap">
       <div class="connect reveal" data-tilt>
-        <p class="label sm" data-i18n="s5Label">Section 05 — Discord / Connect</p>
+        <p class="label sm" data-i18n="s5Label">Section 03 — Discord / Connect</p>
         <p class="connect-text" data-i18n="s5Text">Only after reading above.</p>
 
         <div class="cta-wrap" style="margin-top:22px;">
@@ -947,7 +953,7 @@ const I18N = {
     scrollNote: "Scroll down. Read the process first. Do not skip.",
     recruitTitle: "Read first — Recruitment Info",
     warning: "Important: This does not mean you are immediately accepted. (Going through these steps does not mean guaranteed acceptance)",
-    cpLabel: "Combat Power: ASTRA 125k / ASTRO 100k (Subject to change)",
+    cpLabel: "Combat Power: 125k+ joins ASTRO / 135k+ joins ASTRA (Subject to change)",
     optA: "Option A — Already applied",
     optB: "Option B — Waiting for next transfer",
     discordBtn: "Join Discord",
@@ -958,7 +964,7 @@ const I18N = {
     s1Values: "We value fairness, respect, unity, and transparency.",
     s1Sub: "We grow stronger together — through shared events, clear rules, regular communication, and honest effort.",
 
-    s2Label: "Section 02 — Read First",
+    s2Label: "Section 01 — Read First",
     reqHead: "Requirements",
     req1b: "(Announcements, war commands, boss timers, voice chat, hangout).",
     req2: "Willing to join events: Boss Hunts, Alliance Wars, World Dungeons, PvP Events.",
@@ -986,7 +992,7 @@ const I18N = {
     hl6: "Transparency",
     hl6b: "We believe in transparency. You will learn more about this as we go on.",
 
-    s3Label: "Section 03 — How to Apply",
+    s3Label: "Section 02 — How to Apply",
     s3Title: "Step by step",
     s3Intro: "Follow these steps. Missing a step will slow down your application.",
     step1: "Step 1 — Send basic info",
@@ -996,14 +1002,18 @@ const I18N = {
     tpl2: "Combat Power",
     tpl3: "Current Server",
     tpl4: "Nationality",
-    tpl5: "Reason and Goal for joining",
+    tpl5: "Languages I can communicate in",
+    tpl6: "Availability (timezone + usual active hours)",
+    tpl7: "Previous Guild & Why I Left",
+    tpl8: "Reason and Goal for joining",
+    tplUnderstand: "“I understand that rewards are earned through activity and attendance, and that new members complete a probation period before becoming truly part of the guild.”",
     tplCopyNote: "Copy template",
     stepC1: "Leaders review your information. If approved, the leaders will approve your application in-game.",
     stepC2: "After acceptance, your Discord role and database information will be updated. Your IGN will be added to our database.",
     copy: "Copy",
     copied: "Copied",
 
-    s5Label: "Section 05 — Discord / Connect",
+    s5Label: "Section 03 — Discord / Connect",
     s5Text: "Only after reading above.",
 
     bonusLabel: "Bonus test step",
@@ -1023,7 +1033,7 @@ const I18N = {
     scrollNote: "아래로 스크롤하여 과정을 먼저 읽으세요. 건너뛰지 마세요.",
     recruitTitle: "먼저 읽기 — 모집 정보",
     warning: "중요: 이 정보가 즉시 수용을 의미하지는 않습니다. (이 단계를 진행한다고 해서 수용이 보장되는 것은 아닙니다)",
-    cpLabel: "전투력: ASTRA 125k / ASTRO 100k (변경될 수 있음)",
+    cpLabel: "전투력: 125k 이상은 ASTRO, 135k 이상은 ASTRA로 배정 (변경될 수 있음)",
     optA: "옵션 A — 이미 신청함",
     optB: "옵션 B — 다음 서버 이동 대기",
     discordBtn: "디스코드 참여",
@@ -1034,7 +1044,7 @@ const I18N = {
     s1Values: "저희는 공정함, 존중, 연대, 투명함을 중요하게 생각합니다.",
     s1Sub: "함께하는 이벤트, 명확한 규칙, 꾸준한 소통, 성실한 노력을 통해 함께 더 강해집니다.",
 
-    s2Label: "섹션 02 — 먼저 읽기",
+    s2Label: "섹션 01 — 먼저 읽기",
     reqHead: "필수 조건",
     req1b: "(공지 사항, 공성 명령, 보스 타이머, 음성 채팅, 잡담 방).",
     req2: "이벤트 참여에 협조적이어야 합니다: 보스 사냥, 연합전, 월드 던전, PvP 이벤트.",
@@ -1062,7 +1072,7 @@ const I18N = {
     hl6: "투명성",
     hl6b: "저희는 투명성을 믿습니다. 이 부분은 함께 진행하며 더 알려드리겠습니다.",
 
-    s3Label: "섹션 03 — 신청 방법",
+    s3Label: "섹션 02 — 신청 방법",
     s3Title: "단계별 안내",
     s3Intro: "각 단계를 따르세요. 단계를 놓치면 신청이 늦어질 수 있습니다.",
     step1: "1단계 — 기본 정보 보내기",
@@ -1072,14 +1082,18 @@ const I18N = {
     tpl2: "전투력",
     tpl3: "현재 서버",
     tpl4: "국적",
-    tpl5: "가입 이유와 목표",
+    tpl5: "사용 가능한 언어",
+    tpl6: "활동 가능 시간 (시간대 + 평소 접속 시간)",
+    tpl7: "이전 길드와 탈퇴 이유",
+    tpl8: "가입 이유와 목표",
+    tplUnderstand: "“보상은 활동과 출석으로 얻어지며, 신규 멤버는 수습 기간을 마쳐야 길드의 진정한 일원이 된다는 것을 이해합니다.”",
     tplCopyNote: "양식 복사",
     stepC1: "리더가 정보를 검토합니다. 승인되면 리더가 게임 내 신청을 승인합니다.",
     stepC2: "승인 후 디스코드 역할과 데이터베이스 정보가 업데이트됩니다. IGN이 저희 데이터베이스에 추가됩니다.",
     copy: "복사",
     copied: "복사됨",
 
-    s5Label: "섹션 05 — 디스코드 / 연결",
+    s5Label: "섹션 03 — 디스코드 / 연결",
     s5Text: "위 내용을 모두 읽은 후에 참여하세요.",
 
     bonusLabel: "보너스 테스트 단계",
@@ -1099,7 +1113,7 @@ const I18N = {
     scrollNote: "下にスクロールしてプロセスを最初に読んでください。スキップしないでください。",
     recruitTitle: "最初に読む — 募集情報",
     warning: "重要：これは即時受け入れを意味するものではありません。（これらの手順を踏んでも、受け入れが保証されるわけではありません）",
-    cpLabel: "戦闘力：ASTRA 125k / ASTRO 100k (変更される場合あり)",
+    cpLabel: "戦闘力：125k以上はASTRO、135k以上はASTRAに配属（変更される場合あり）",
     optA: "オプション A — すでに申請済み",
     optB: "オプション B — 次のサーバー移動を待機",
     discordBtn: "Discord に参加",
@@ -1110,7 +1124,7 @@ const I18N = {
     s1Values: "私たちは公平さ、敬意、団結、透明性を大切にします。",
     s1Sub: "共有イベント、明確なルール、定期的なコミュニケーション、誠実な努力を通じて、共に強くなります。",
 
-    s2Label: "セクション 02 — 最初に読む",
+    s2Label: "セクション 01 — 最初に読む",
     reqHead: "参加条件",
     req1b: "（お知らせ、戦争指示、ボス討伐時間、ボイスチャット、雑談）。",
     req2: "イベントへの参加に協力的であること：ボス討伐、連合戦争、ワールドダンジョン、PvP イベント。",
@@ -1138,7 +1152,7 @@ const I18N = {
     hl6: "透明性",
     hl6b: "私たちは透明性を重視します。この点は進みながら詳しくお伝えします。",
 
-    s3Label: "セクション 03 — 申請方法",
+    s3Label: "セクション 02 — 申請方法",
     s3Title: "手順の説明",
     s3Intro: "手順に従ってください。手順が不足すると申請が遅れます。",
     step1: "ステップ 1 — 基本情報を送信",
@@ -1148,14 +1162,18 @@ const I18N = {
     tpl2: "戦闘力",
     tpl3: "現在のサーバー",
     tpl4: "国籍",
-    tpl5: "参加の理由と目標",
+    tpl5: "対応可能な言語",
+    tpl6: "活動可能時間（タイムゾーン＋通常の活動時間）",
+    tpl7: "以前のギルドと脱退理由",
+    tpl8: "参加の理由と目標",
+    tplUnderstand: "“報酬は活動と出席によって得られるものであり、新メンバーは試用期間を終えて初めてギルドの真の一員になることを理解しています。”",
     tplCopyNote: "テンプレートをコピー",
     stepC1: "リーダーが情報を確認します。承認されると、リーダーがゲーム内で申請を承認します。",
     stepC2: "承認後、Discord のロールとデータベース情報が更新されます。IGN はデータベースに追加されます。",
     copy: "コピー",
     copied: "コピーしました",
 
-    s5Label: "セクション 05 — Discord / 連絡",
+    s5Label: "セクション 03 — Discord / 連絡",
     s5Text: "上記をすべて読んでからご参加ください。",
 
     bonusLabel: "ボーナステストステップ",
@@ -1204,7 +1222,7 @@ try{
 }catch(e){}
 
 /* ============================================================
-   SMOOTH SCROLL — "Join us" → Section 02
+   SMOOTH SCROLL — "Join us" → Section 01
    ============================================================ */
 document.getElementById('joinBtn').addEventListener('click', ()=>{
   const target = document.getElementById('recruit');
